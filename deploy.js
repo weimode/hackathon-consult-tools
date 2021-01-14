@@ -24,14 +24,14 @@ async function deploy() {
   try {
     await git
       .init()
-      .checkoutLocalBranch('develop')
+      .checkoutLocalBranch('dev')
       .add('./*')
       .commit('auto commit')
       .addRemote(
         'origin',
         'http://gitlab.apps.test.datadrivecloud.com/hackthon/front.git',
       )
-      .push(['origin', 'develop', '--force']);
+      .push(['origin', 'dev', '--force']);
     status.stop();
     ora('build push完成..').info();
   } catch (err) {
