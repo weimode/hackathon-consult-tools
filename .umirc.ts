@@ -10,10 +10,13 @@ export default defineConfig({
     hmr: true,
   },
   antd: {},
+  routes: [{ path: '/', component: '@/pages/index' }],
+  theme: {
+    'primary-color': '#008b7b',
+  },
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [{ path: '/', component: '@/pages/index' }],
   extraPostCSSPlugins: [
     postcssPx2vw({
       viewportWidth: 750, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
