@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "lint": "umi g tmp && npm run lint:js && npm run lint:prettier",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
+    "precommit": "lint-staged",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@umijs/preset-react": "1.x",
+    "postcss-px-to-viewport": "^1.1.1",
+    "umi": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@umijs/fabric": "^2.4.11",
+    "clui": "^0.3.6",
+    "cross-spawn": "^7.0.3",
+    "lint-staged": "^10.0.7",
+    "ora": "^5.2.0",
+    "path": "^0.12.7",
+    "prettier": "^2.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "simple-git": "^2.31.0",
+    "typescript": "^4.1.2",
+    "yorkie": "^2.0.0"
+  }
+}
