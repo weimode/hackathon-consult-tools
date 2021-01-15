@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@antv/f2": "^3.8.1",
     "@umijs/preset-react": "1.x",
     "postcss-px-to-viewport": "^1.1.1",
     "umi": "^3.3.4"

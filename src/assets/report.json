@@ -1,0 +1,172 @@
+{
+  "国家发文与被引": [
+    { "title": "美国", "Output": "38171", "count": "1011705" },
+    { "title": "英国", "Output": "11418", "count": "353194" },
+    { "title": "中国", "Output": "8402", "count": "148579" },
+    { "title": "加拿大", "Output": "7318", "count": "198250" },
+    { "title": "澳大利亚", "Output": "6788", "count": "179646" },
+    { "title": "德国", "Output": "4472", "count": "133226" },
+    { "title": "巴西", "Output": "4470", "count": "64967" },
+    { "title": "西班牙", "Output": "4457", "count": "104896" },
+    { "title": "荷兰", "Output": "4078", "count": "147179" },
+    { "title": "法国", "Output": "4056", "count": "120616" }
+  ],
+  "机构发文被引篇均被引": [
+    {
+      "title": "Harvard University",
+      "Output": "4355",
+      "Citations": "166887",
+      "count": "38.3"
+    },
+    {
+      "title": "Centers for Disease Control and Prevention",
+      "Output": "2505",
+      "Citations": "113353",
+      "count": "45.3"
+    },
+    {
+      "title": "University of Toronto",
+      "Output": "2371",
+      "Citations": "73879",
+      "count": "31.2"
+    },
+    {
+      "title": "Johns Hopkins University",
+      "Output": "2185",
+      "Citations": "82092",
+      "count": "37.6"
+    },
+    {
+      "title": "National Institutes of Health",
+      "Output": "2050",
+      "Citations": "104139",
+      "count": "50.8"
+    },
+    {
+      "title": "University of Washington",
+      "Output": "1822",
+      "Citations": "79603",
+      "count": "43.7"
+    },
+    {
+      "title": "Institut national de la santé et de la recherche ...",
+      "Output": "1761",
+      "Citations": "50703",
+      "count": "28.8"
+    },
+    {
+      "title": "Karolinska Institutet",
+      "Output": "1756",
+      "Citations": "65226",
+      "count": "37.1"
+    },
+    {
+      "title": "Department of Veterans Affairs",
+      "Output": "1684",
+      "Citations": "52668",
+      "count": "31.3"
+    },
+    {
+      "title": "University of Copenhagen",
+      "Output": "1568",
+      "Citations": "51435",
+      "count": "32.8"
+    }
+  ],
+  "学者发文被引": [
+    {
+      "title": "Rehm, Jurgen T.",
+      "Affiliation": "Technische Universität Dresden",
+      "Country": "Germany",
+      "Output": "176",
+      "count": "9665"
+    },
+    {
+      "title": "Hu, Frank B.",
+      "Affiliation": "Harvard University",
+      "Country": "United States",
+      "Output": "149",
+      "count": "13222"
+    },
+    {
+      "title": "Willett, Walter Churchill",
+      "Affiliation": "Harvard University",
+      "Country": "United States",
+      "Output": "140",
+      "count": "10854"
+    },
+    {
+      "title": "Tjønneland, A.",
+      "Affiliation": "Danish Cancer Society",
+      "Country": "Denmark",
+      "Output": "136",
+      "count": "6031"
+    },
+    {
+      "title": "Kivimaki, Mika",
+      "Affiliation": "Finnish Institute of Occupational Health",
+      "Country": "Finland",
+      "Output": "104",
+      "count": "8194"
+    },
+    {
+      "title": "Gissler, Mika V.M.",
+      "Affiliation": "Karolinska Institutet",
+      "Country": "Sweden",
+      "Output": "103",
+      "count": "2763"
+    },
+    {
+      "title": "Brenner, Hermann",
+      "Affiliation": "German Cancer Research Center",
+      "Country": "Germany",
+      "Output": "102",
+      "count": "11583"
+    },
+    {
+      "title": "Smith, George D.",
+      "Affiliation": "University of Bristol",
+      "Country": "United Kingdom",
+      "Output": "101",
+      "count": "6560"
+    },
+    {
+      "title": "Overvad, Kim",
+      "Affiliation": "Aalborg University",
+      "Country": "Denmark",
+      "Output": "98",
+      "count": "5022"
+    },
+    {
+      "title": "Wareham, Nicholas J.",
+      "Affiliation": "Medical Research Council",
+      "Country": "United Kingdom",
+      "Output": "97",
+      "count": "6634"
+    }
+  ],
+  "专利ipc排行榜": [
+    { "title": "A61P35/00", "count": "2492", "name": "抗肿瘤药" },
+    { "title": "A61P44/265", "count": "2280", "name": "特殊目的的药物" },
+    { "title": "C12Q1/68", "count": "683", "name": "包括核酸" },
+    { "title": "A61K39/395", "count": "456", "name": "抗体" },
+    { "title": "A61P11/00", "count": "433", "name": "治疗呼吸系统疾病的药物" },
+    { "title": "A23F3/34", "count": "426", "name": "茶代用品" },
+    { "title": "A61K36/899", "count": "373", "name": "禾本科" },
+    { "title": "A61P29/00", "count": "330", "name": "非中枢性止痛剂" },
+    { "title": "A61P9/00", "count": "317", "name": "治疗心血管系统疾病的药物" },
+    { "title": "A61K36/9066", "count": "296", "name": "姜黄属" }
+  ],
+  "各省机构数排行榜": [
+    { "title": "广东", "count": "735" },
+    { "title": "北京", "count": "718" },
+    { "title": "山东", "count": "416" },
+    { "title": "上海", "count": "351" },
+    { "title": "江苏", "count": "326" },
+    { "title": "四川", "count": "290" },
+    { "title": "浙江", "count": "273" },
+    { "title": "湖南", "count": "224" },
+    { "title": "湖北", "count": "176" },
+    { "title": "江西", "count": "165" }
+  ]
+}
