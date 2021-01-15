@@ -25,10 +25,15 @@ const SearchList: React.FC<SearchListProps> = (props) => {
   const [activeIndex, setActiveIndex] = useState(queryIndex[0].key);
   const [searching, setSearching] = useState(true);
   const [list, setList] = useState<{ data?: any[]; total?: number }>({});
+  const [searchParams, setSearchParams] = useState({});
 
-  const onSearch = (params?: { name?: string; nameEn?: string }) => {
+  const onSearch = async (params?: {
+    name?: string;
+    nameEn?: string;
+    loadmore?: boolean;
+  }) => {
     setSearching(false);
-    dispatch({
+    await dispatch({
       type: 'query/query',
       payload: {
         query: params?.name || inputVal,
@@ -47,6 +52,7 @@ const SearchList: React.FC<SearchListProps> = (props) => {
   useEffect(() => {
     setInputVal(name || '');
     if (name) {
+      setSearchParams({ name, nameEn });
       onSearch({ name, nameEn });
     }
   }, [name]);
@@ -65,9 +71,10 @@ const SearchList: React.FC<SearchListProps> = (props) => {
           autoFocus={!name}
           onChange={(val) => {
             setInputVal(val);
+            setSearchParams({});
             fetchNameList(val);
           }}
-          defaultValue={inputVal}
+          value={inputVal}
           onFocus={() => setSearching(true)}
           onVirtualKeyboardConfirm={() => {
             onSearch();
@@ -84,6 +91,11 @@ const SearchList: React.FC<SearchListProps> = (props) => {
               key={item.preferredId}
               className={styles['list-item']}
               onClick={() => {
+                setInputVal(item.translation || item.keyword);
+                setSearchParams({
+                  name: item.translation,
+                  nameEn: item.keyword,
+                });
                 onSearch({ name: item.translation, nameEn: item.keyword });
               }}
             >
@@ -109,7 +121,15 @@ const SearchList: React.FC<SearchListProps> = (props) => {
               </Button>
             ))}
           </Flex>
-          <LoadMoreList dataSource={list?.data || []} id={activeIndex} />
+          <div className={styles.tips}>共{list?.total || 0}条数据</div>
+          <LoadMoreList
+            dataSource={list?.data || []}
+            id={activeIndex}
+            onEnd={async (callback) => {
+              await onSearch({ ...searchParams, loadmore: true });
+              callback();
+            }}
+          />
         </div>
       )}
     </div>
