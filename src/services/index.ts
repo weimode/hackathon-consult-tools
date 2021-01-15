@@ -32,3 +32,7 @@ export async function query(params: QueryParams) {
 export async function queryNameList(name: string) {
   return request(`/stkos/completionKeyword?keyword=${name}`);
 }
+
+export async function searchAllScholars() {
+  return request('/stkos/searchAllScholars');
+}

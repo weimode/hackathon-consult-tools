@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'antd-mobile';
-import type { DiseaseItemType, ExpertInfoType } from '@/models/consult';
+import type { DiseaseItemType } from '@/models/consult';
+import type { ExpertInfoType } from '@/models/experts';
 import styles from './index.less';
 import robot_avatar from '@/assets/image/avatar-robot.png';
 import user_avatar from '@/assets/image/avatar-user.png';

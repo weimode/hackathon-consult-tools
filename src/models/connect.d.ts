@@ -2,8 +2,14 @@ import type { Location, History } from 'umi';
 import { GlobalModelState } from './global';
 import { ConsultModelState } from './consult';
 import { QueryModelState } from './query';
+import { ExpertsModelState } from './experts';
 
-export { GlobalModelState, ConsultModelState, QueryModelState };
+export {
+  GlobalModelState,
+  ConsultModelState,
+  QueryModelState,
+  ExpertsModelState,
+};
 
 export type Loading = {
   global: boolean;
@@ -12,6 +18,7 @@ export type Loading = {
     global?: boolean;
     consult?: boolean;
     query?: boolean;
+    experts?: boolean;
   };
 };
 
@@ -20,6 +27,7 @@ export type ConnectState = {
   loading: Loading;
   consult: ConsultModelState;
   query: QueryModelState;
+  experts: ExpertsModelState;
 };
 
 export type Match<P> = {

@@ -1,18 +1,7 @@
 import type { Effect, Reducer } from 'umi';
 import { fetchDisease, searchScholarByPreId } from '@/services/index';
 import type { ConnectState } from './connect';
-
-export type ExpertInfoType = {
-  asjc1stCh: string;
-  asjc2ndCh: string;
-  hindex: string;
-  id: number;
-  logo: string;
-  nameCh: string;
-  nameEn: string;
-  orgnNameCh: string;
-  orgnNameEn: string;
-};
+import type { ExpertInfoType } from './experts';
 
 export type DiseaseItemType = {
   preferredId: string;
