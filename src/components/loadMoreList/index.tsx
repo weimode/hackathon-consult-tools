@@ -3,6 +3,7 @@ import styles from './index.less';
 
 type LoadMoreListProps = {
   dataSource?: any[];
+  id: string;
 };
 
 const LoadMoreList: React.FC<LoadMoreListProps> = (props) => {

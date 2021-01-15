@@ -1,37 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { InputItem, Button, Icon, Flex } from 'antd-mobile';
-import type { RouteComponentProps } from '@/models/connect';
+import type { Dispatch } from 'umi';
+import { connect } from 'umi';
+import type {
+  RouteComponentProps,
+  ConnectState,
+  QueryModelState,
+} from '@/models/connect';
 import LoadMoreList from '@/components/loadMoreList';
 import { queryIndex } from '@/constant/index';
 import styles from './index.less';
 import { classCombs } from '@/utils/utils';
 
-const data = new Array(50).fill({}).map((item, i) => ({
-  img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
-  title: `${i + 1} McDonald's invites you`,
-  des: '不是所有的兼职汪都需要风吹日晒',
-}));
-
-type SearchListProps = RouteComponentProps<any> & {};
+type SearchListProps = RouteComponentProps<any> &
+  QueryModelState & {
+    dispatch: Dispatch;
+  };
 
 const SearchList: React.FC<SearchListProps> = (props) => {
-  const { location } = props;
-  const { name }: { name?: string } = location.query || {};
+  const { location, nameList, dispatch, allList } = props;
+  const { name, nameEn }: { name?: string; nameEn?: string } =
+    location.query || {};
   const [inputVal, setInputVal] = useState(name);
   const [activeIndex, setActiveIndex] = useState(queryIndex[0].key);
   const [searching, setSearching] = useState(true);
+  const [list, setList] = useState<{ data?: any[]; total?: number }>({});
 
-  const onSearch = (params?: string) => {
-    console.log(inputVal, params);
+  const onSearch = (params?: { name?: string; nameEn?: string }) => {
     setSearching(false);
+    dispatch({
+      type: 'query/query',
+      payload: {
+        query: params?.name || inputVal,
+        queryEn: params?.nameEn || '',
+      },
+    });
+  };
+
+  const fetchNameList = (val: string) => {
+    dispatch({
+      type: 'query/queryNameList',
+      payload: val,
+    });
   };
 
   useEffect(() => {
     setInputVal(name || '');
     if (name) {
-      onSearch(name);
+      onSearch({ name, nameEn });
     }
   }, [name]);
+
+  useEffect(() => {
+    setList(allList[activeIndex]);
+  }, [activeIndex]);
 
   return (
     <div className={styles['search-list']}>
@@ -43,10 +65,13 @@ const SearchList: React.FC<SearchListProps> = (props) => {
           autoFocus={!name}
           onChange={(val) => {
             setInputVal(val);
+            fetchNameList(val);
           }}
           defaultValue={inputVal}
           onFocus={() => setSearching(true)}
-          onVirtualKeyboardConfirm={onSearch}
+          onVirtualKeyboardConfirm={() => {
+            onSearch();
+          }}
         />
         <Button className={styles.search} onClick={() => onSearch()}>
           搜索
@@ -54,10 +79,18 @@ const SearchList: React.FC<SearchListProps> = (props) => {
       </div>
       {searching ? (
         <div className={styles['match-list']}>
-          <div className={styles['list-item']}>
-            <Icon className={styles.icon} type="search" size="xxs" />
-            {inputVal}1233
-          </div>
+          {nameList?.map((item) => (
+            <div
+              key={item.preferredId}
+              className={styles['list-item']}
+              onClick={() => {
+                onSearch({ name: item.translation, nameEn: item.keyword });
+              }}
+            >
+              <Icon className={styles.icon} type="search" size="xxs" />
+              {item.translation || item.keyword}
+            </div>
+          ))}
         </div>
       ) : (
         <div>
@@ -76,11 +109,13 @@ const SearchList: React.FC<SearchListProps> = (props) => {
               </Button>
             ))}
           </Flex>
-          <LoadMoreList dataSource={data} />
+          <LoadMoreList dataSource={list?.data || []} id={activeIndex} />
         </div>
       )}
     </div>
   );
 };
 
-export default SearchList;
+export default connect(({ query }: ConnectState) => ({
+  ...query,
+}))(SearchList);

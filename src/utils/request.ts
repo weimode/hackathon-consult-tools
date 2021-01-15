@@ -2,8 +2,6 @@ import { extend } from 'umi-request';
 import { Toast } from 'antd-mobile';
 // const isHttpReg = /http[s]{0,1}:\/\/([\w.]+\/?)\S*/;
 
-const baseUrl = 'http://192.168.200.132:8081';
-
 const errorHandler = (error: { response: Response }): Response => {
   const { response } = error;
   if (response && response.status) {
@@ -19,7 +17,7 @@ const errorHandler = (error: { response: Response }): Response => {
  * 配置request请求时的默认参数
  */
 const request = extend({
-  prefix: process.env.NODE_ENV === 'production' ? baseUrl : '',
+  prefix: 'http://aichronic-api.sstir.cn',
   errorHandler, // 默认错误处理
   // headers: {},
 });
