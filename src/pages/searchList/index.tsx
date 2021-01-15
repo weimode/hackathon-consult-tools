@@ -16,19 +16,22 @@ type SearchListProps = RouteComponentProps<any> & {};
 
 const SearchList: React.FC<SearchListProps> = (props) => {
   const { location } = props;
-  const { name } = location.query || {};
+  const { name }: { name?: string } = location.query || {};
   const [inputVal, setInputVal] = useState(name);
   const [activeIndex, setActiveIndex] = useState(queryIndex[0].key);
   const [searching, setSearching] = useState(true);
 
-  useEffect(() => {
-    setInputVal(name);
-  }, [name]);
-
-  const onSearch = () => {
-    console.log(inputVal);
+  const onSearch = (params?: string) => {
+    console.log(inputVal, params);
     setSearching(false);
   };
+
+  useEffect(() => {
+    setInputVal(name || '');
+    if (name) {
+      onSearch(name);
+    }
+  }, [name]);
 
   return (
     <div className={styles['search-list']}>
@@ -37,14 +40,15 @@ const SearchList: React.FC<SearchListProps> = (props) => {
           className={styles.input}
           clear
           placeholder="请输入关键词搜索"
-          autoFocus
+          autoFocus={!name}
           onChange={(val) => {
             setInputVal(val);
           }}
+          defaultValue={inputVal}
           onFocus={() => setSearching(true)}
           onVirtualKeyboardConfirm={onSearch}
         />
-        <Button className={styles.search} onClick={onSearch}>
+        <Button className={styles.search} onClick={() => onSearch()}>
           搜索
         </Button>
       </div>
