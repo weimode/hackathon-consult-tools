@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputItem } from 'antd-mobile';
+import { InputItem, Button } from 'antd-mobile';
 import styles from './index.less';
 
 const SearchList = () => {
@@ -12,7 +12,7 @@ const SearchList = () => {
           placeholder="请输入关键词搜索"
           onVirtualKeyboardConfirm={() => {}}
         />
-        {/* <Button className={styles.search}>搜索</Button> */}
+        <Button className={styles.search}>搜索</Button>
       </div>
     </div>
   );

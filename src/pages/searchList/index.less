@@ -2,19 +2,35 @@
   display: flex;
   padding: 10px 16px;
   background-color: @primary-color;
+  font-size: 14px;
+  justify-content: space-between;
   .input {
+    flex: 4;
     height: 36px;
+    min-height: 0 !important;
     background-color: rgba(0, 0, 0, 0.12);
+    vertical-align: middle;
     input {
+      font-size: 14px;
+      line-height: 36px;
       color: #ffffff;
     }
     :global {
       .am-list-line::after {
         display: none !important;
       }
+      .am-input-clear {
+        background-color: transparent;
+      }
     }
   }
   .search {
     height: 36px;
+    padding: 0 16px;
+    font-size: 14px;
+    line-height: 36px;
+    background-color: rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+    margin-left: 16px;
   }
 }
