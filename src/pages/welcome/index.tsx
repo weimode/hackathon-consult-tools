@@ -1,11 +1,12 @@
 import React from 'react';
 import { Icon, Button } from 'antd-mobile';
 import { history } from 'umi';
+import { home_icons } from '@/constant/index';
 import styles from './index.less';
 import robot_icon from '@/assets/image/robot.png';
-import body_left from '@/assets/image/body-left.png';
+import body_left from '@/assets/image/body-left2.png';
 import body_active from '@/assets/image/body.gif';
-import body_right from '@/assets/image/body-right.png';
+import body_right from '@/assets/image/body-right2.png';
 import body_bottom from '@/assets/image/body-bottom.png';
 
 const Welcome = () => {
@@ -29,12 +30,7 @@ const Welcome = () => {
           <Icon className={styles['search-icon']} type="search" size="sm" />
         </div>
       </div>
-      <div
-        className={styles['active-images']}
-        onClick={() => {
-          history.push('/category');
-        }}
-      >
+      <div className={styles['active-images']}>
         <div>
           <img src={body_left} alt="" />
         </div>
@@ -44,6 +40,17 @@ const Welcome = () => {
         <div>
           <img src={body_right} alt="" />
         </div>
+        {home_icons.map((item) => (
+          <img
+            key={item.key}
+            className={styles['float-icon']}
+            src={item.icon}
+            alt=""
+            onClick={() => {
+              history.push(`/category?parentId=${item.key}`);
+            }}
+          />
+        ))}
       </div>
       <img className={styles['bottom-img']} src={body_bottom} alt="" />
       <div className={styles['entry-row']}>

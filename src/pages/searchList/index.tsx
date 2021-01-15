@@ -59,7 +59,7 @@ const SearchList: React.FC<SearchListProps> = (props) => {
 
   useEffect(() => {
     setList(allList[activeIndex]);
-  }, [activeIndex]);
+  }, [activeIndex, allList]);
 
   return (
     <div className={styles['search-list']}>

@@ -36,3 +36,7 @@ export async function queryNameList(name: string) {
 export async function searchAllScholars() {
   return request('/stkos/searchAllScholars');
 }
+
+export async function categoryByParentId(parentId: string) {
+  return request(`/disease/categoryByParentId?parentId=${parentId}`);
+}

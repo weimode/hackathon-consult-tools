@@ -3,12 +3,14 @@ import { GlobalModelState } from './global';
 import { ConsultModelState } from './consult';
 import { QueryModelState } from './query';
 import { ExpertsModelState } from './experts';
+import { CategoryModelState } from './category';
 
 export {
   GlobalModelState,
   ConsultModelState,
   QueryModelState,
   ExpertsModelState,
+  CategoryModelState,
 };
 
 export type Loading = {
@@ -19,6 +21,7 @@ export type Loading = {
     consult?: boolean;
     query?: boolean;
     experts?: boolean;
+    category?: boolean;
   };
 };
 
@@ -28,6 +31,7 @@ export type ConnectState = {
   consult: ConsultModelState;
   query: QueryModelState;
   experts: ExpertsModelState;
+  category: CategoryModelState;
 };
 
 export type Match<P> = {
