@@ -10,7 +10,15 @@ export default defineConfig({
     hmr: true,
   },
   antd: {},
-  routes: [{ path: '/', component: '@/pages/index' }],
+  routes: [
+    { path: '/', redirect: '/welcome' },
+    { path: '/welcome', component: '@/pages/welcome' },
+    { path: '/consult', component: '@/pages/autoConsult' },
+    { path: '/query', component: '@/pages/searchList' },
+    { path: '/category', component: '@/pages/categoryList' },
+    { path: '/report', component: '@/pages/report' },
+    { path: '/experts', component: '@/pages/expertList' },
+  ],
   theme: {
     'primary-color': '#008b7b',
   },
@@ -19,7 +27,7 @@ export default defineConfig({
   },
   extraPostCSSPlugins: [
     postcssPx2vw({
-      viewportWidth: 750, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
+      viewportWidth: 375, // 视窗的宽度，对应的是我们设计稿的宽度，一般是750
       unitPrecision: 3, // 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）
       viewportUnit: 'vw', // 指定需要转换成的视窗单位，建议使用vw
       minPixelValue: 1, // 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值

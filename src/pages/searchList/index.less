@@ -1,0 +1,20 @@
+.search-bar {
+  display: flex;
+  padding: 10px 16px;
+  background-color: @primary-color;
+  .input {
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.12);
+    input {
+      color: #ffffff;
+    }
+    :global {
+      .am-list-line::after {
+        display: none !important;
+      }
+    }
+  }
+  .search {
+    height: 36px;
+  }
+}
