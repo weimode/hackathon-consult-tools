@@ -34,3 +34,36 @@
     margin-left: 16px;
   }
 }
+.match-list {
+  background-color: #ffffff;
+  min-height: calc(100vh - 56px);
+  .list-item {
+    display: flex;
+    height: 36px;
+    padding-left: 16px;
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
+  }
+  .icon {
+    color: #888888;
+    margin-right: 10px;
+  }
+}
+
+.index-btn {
+  padding: 0 16px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  border-radius: 12px;
+  color: #797f80;
+  margin: 10px 0 10px 8px;
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.active-btn {
+  background-color: @primary-color;
+  color: #ffffff;
+}
