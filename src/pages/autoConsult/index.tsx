@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { Dispatch } from 'umi';
 import { connect } from 'umi';
 import type { ConnectState, ConsultModelState } from '@/models/connect';
@@ -12,6 +12,7 @@ type AutoConsultProps = ConsultModelState & {
 
 const AutoConsult: React.FC<AutoConsultProps> = (props) => {
   const { chatList, dispatch } = props;
+  const scrollBody = useRef<HTMLDivElement>(null);
   useEffect(() => {
     dispatch({
       type: 'consult/fetchDisease',
@@ -25,8 +26,15 @@ const AutoConsult: React.FC<AutoConsultProps> = (props) => {
       });
     };
   }, []);
+  useEffect(() => {
+    const scrollEl = scrollBody?.current;
+    scrollEl?.scrollTo({
+      top: scrollEl?.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [chatList]);
   return (
-    <div className={styles['auto-consult']}>
+    <div className={styles['auto-consult']} ref={scrollBody}>
       <div className={styles.tips}>您好，小A将为您答疑解惑！</div>
       {chatList.map((item, i) => {
         if (item.type === 'user') {

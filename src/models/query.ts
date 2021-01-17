@@ -44,18 +44,20 @@ const QueryModel: QueryModelType = {
       }
     },
     *query({ payload }, { call, put, select }) {
+      const { pageNum, allList } = yield select(
+        (state: ConnectState) => state.query,
+      );
       const { loadmore, ...otherParams } = payload;
-      if (loadmore) {
-        const { pageNum, allList } = yield select(
-          (state: ConnectState) => state.query,
-        );
-        const res = yield call(query, {
-          ...otherParams,
-          pageSize: 20,
-          pageNum: pageNum + 1,
-        });
-        if (res && res.code === 200) {
-          const nAll = res.data || {};
+      console.log(payload);
+      const params = {
+        ...otherParams,
+        pageSize: 100,
+        pageNum: loadmore ? pageNum + 1 : 1,
+      };
+      const res = yield call(query, params);
+      if (res && res.code === 200) {
+        const nAll = res.data || {};
+        if (loadmore) {
           yield put({
             type: 'save',
             payload: {
@@ -80,18 +82,11 @@ const QueryModel: QueryModelType = {
               pageNum: pageNum + 1,
             },
           });
-        }
-      } else {
-        const res = yield call(query, {
-          ...otherParams,
-          pageSize: 20,
-          pageNum: 1,
-        });
-        if (res && res.code === 200) {
+        } else {
           yield put({
             type: 'save',
             payload: {
-              allList: res.data || {},
+              allList: nAll,
               pageNum: 1,
             },
           });

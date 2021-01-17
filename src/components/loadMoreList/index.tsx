@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { debounce } from 'lodash';
 import { FundItem, PaperItem, PatentItem } from '../items';
 import OrgnItem from '../items/orgnItem';
 import styles from './index.less';
@@ -33,7 +34,7 @@ const LoadMoreList: React.FC<LoadMoreListProps> = (props) => {
     <div
       className={styles['list-container']}
       ref={listContainer}
-      onScroll={() => {
+      onScroll={debounce(() => {
         const curList = lmList.current;
         const container = listContainer.current;
         if (
@@ -41,12 +42,13 @@ const LoadMoreList: React.FC<LoadMoreListProps> = (props) => {
           (curList?.scrollHeight || 0) - (container?.clientHeight || 0)
         ) {
           // setLoading(true);
-          if (onEnd)
+          if (onEnd) {
             onEnd(() => {
               setLoading(false);
             });
+          }
         }
-      }}
+      }, 500)}
     >
       <div className={styles['loadmore-list']} ref={lmList}>
         {dataSource?.map((item, i) => (

@@ -64,7 +64,7 @@ const RobotCard = (props: RobotCardType) => {
           </div>
         ) : null}
         {experts?.map((item) => (
-          <div className={styles['personal-card']}>
+          <div key={item.id} className={styles['personal-card']}>
             <img
               src={`http://gesimg.sstir.cn/expert/logo/${item.logo}`}
               alt=""

@@ -38,6 +38,7 @@ const SearchList: React.FC<SearchListProps> = (props) => {
       payload: {
         query: params?.name || inputVal,
         queryEn: params?.nameEn || '',
+        loadmore: params?.loadmore,
       },
     });
   };

@@ -9,10 +9,10 @@ type PatentItemProps = {
   appno: string;
   inventors: {
     name_zh: string;
-  };
+  }[];
   applicants: {
     name_zh: string;
-  };
+  }[];
   abstract: {
     text_zh: string;
   };
@@ -42,11 +42,17 @@ const PatentItem: React.FC<PatentItemProps> = (props) => {
     },
     {
       label: '发明人',
-      value: inventors?.name_zh || '-',
+      value:
+        inventors && inventors[0] && inventors[0].name_zh
+          ? inventors[0].name_zh
+          : '-',
     },
     {
       label: '申请人',
-      value: applicants?.name_zh || '-',
+      value:
+        applicants && applicants[0] && applicants[0].name_zh
+          ? applicants[0].name_zh
+          : '-',
     },
     {
       label: '分类号',
